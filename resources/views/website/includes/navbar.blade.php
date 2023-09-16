@@ -1,4 +1,4 @@
-<header class="site-navbar w-100 position-fixed" role="banner">
+<header class="site-navbar w-100 " role="banner">
     <div class="site-navbar-top">
         <div class="container">
             <div class="row align-items-center">
