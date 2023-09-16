@@ -15,15 +15,37 @@
 </div>
     <div class="col-6 col-md-4 order-3 order-md-3 text-right">
         <div class="site-top-icons">
-            <ul>
-                <li><a href="#"><span class="icon icon-person"></span></a></li>
-                    <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+            <ul class="btn-group">
+                <li>
+                    @auth
+                        <a class="text-decoration-none" href="javascript:void(0);">{{ auth()->user()->name ?? '' }}</a>
+                    @endauth
+                    @guest
+                        <a class="text-decoration-none">{{ 'guest_'.uniqid() }}</a>
+                    @endguest
+                </li>
+                {{-- <li><a href="#"><span class="icon icon-person"></span></a></li> --}}
+                @auth<li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                         <li>
                             <a href="{{ route('cart') }}" class="site-cart">
                                 <span class="icon icon-shopping_cart"></span>
                                     <span class="count">2</span>
 </a>
-</li>
+</li>@endauth
+
+<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" area-haspopup="true" area-expanded="false">
+    <span class="icon icon-person"></span>
+</button>
+<div class="dropdown-menu dropdown-menu-right">
+    @if(auth()->user())
+        <button class="dropdown-item" type="button">Profile Management</button>
+        <button class="dropdown-item" type="button">Dashboard</button>
+    @else
+        <button class="dropdown-item" type="button" onclick="window.location.href = '{{ route('login') }}';">Login</button>
+        <button class="dropdown-item" type="button" onclick="window.location.href = '{{ route('register') }}';">Register</button>
+    @endif
+</div>
+
     <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
 </div>
 </ul>
@@ -66,3 +88,4 @@
 </div>
 </nav>
 </header>
+
