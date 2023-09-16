@@ -35,3 +35,19 @@ Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout')
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//*****-------------------- START dashboard/admin route. --------------------*****//
+Route::group([
+    'middleware' => ['auth', 'dashboard']
+], function () {
+
+    Route::prefix('dashboard')->group(function () {
+        //---------------- START dashboard ome route ----------------//
+        Route::group([], function () {
+            Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+        });
+        //---------------- END dashboard ome route ----------------//
+
+    });
+});
+//*****-------------------- END dashboard/admin route. --------------------*****//
