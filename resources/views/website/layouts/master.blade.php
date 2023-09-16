@@ -26,8 +26,10 @@
     @include('website.includes.navbar')
 {{-- End Navbar --}}
 {{-- Start Section --}}
+    {{-- <div class="@if(Route::is('login') || Route::is('login')) mt-5 @endif"> --}}
     @section('main-content')
-        @show
+    @show
+    {{-- </div> --}}
 {{-- End Section --}}
 {{-- Start Footer --}}
     @include('website.includes.footer')
