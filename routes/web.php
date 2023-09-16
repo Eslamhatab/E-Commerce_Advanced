@@ -31,7 +31,7 @@ Route::get('/search' , [MainController::class, 'search'])->name('search');
 //wishlist Page
 Route::get('/wishlist',[MainController::class,'wishlist'])->name('wishlist');
 //thankyou Page
-Route::post('/thank-you' , [MainController::class] ,'thankyou')->name('thank-you');
+Route::get('/thank-you' , [MainController::class, 'thankYou'])->name('thank-you');
 //checkout Page
 Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout');
 
@@ -46,6 +46,8 @@ Route::group([
         //---------------- START dashboard home route ----------------//
         Route::get('/', [HomeController::class, 'index'])->name('dashboard');
         //---------------- END dashboard home route ----------------//
+
+        //
 
     });
 });

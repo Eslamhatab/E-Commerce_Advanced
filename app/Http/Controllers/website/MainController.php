@@ -36,7 +36,7 @@ class MainController extends Controller
         return view('website.pages.wishlist');
     }
     //thankyou Page
-    public function thankyou(){
+    public function thankYou(){
         return view('website.pages.thank-you');
     }
     //checkout page
