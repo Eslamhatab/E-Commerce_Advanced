@@ -12,6 +12,9 @@ use App\Http\Controllers\website\MainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+
 //Website MainController
 // Home Page
 Route::get('/',[MainController::class, 'home'])->name('home');
@@ -32,8 +35,6 @@ Route::post('/thank-you' , [MainController::class] ,'thankyou')->name('thank-you
 //checkout Page
 Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout');
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //*****-------------------- START dashboard/admin route. --------------------*****//
@@ -42,11 +43,9 @@ Route::group([
 ], function () {
 
     Route::prefix('dashboard')->group(function () {
-        //---------------- START dashboard ome route ----------------//
-        Route::group([], function () {
-            Route::get('/', [HomeController::class, 'index'])->name('dashboard');
-        });
-        //---------------- END dashboard ome route ----------------//
+        //---------------- START dashboard home route ----------------//
+        Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+        //---------------- END dashboard home route ----------------//
 
     });
 });
