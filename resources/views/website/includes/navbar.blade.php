@@ -38,8 +38,15 @@
 </button>
 <div class="dropdown-menu dropdown-menu-right">
     @if(auth()->user())
-        <button class="dropdown-item" type="button">Profile Management</button>
-        <button class="dropdown-item" type="button">Dashboard</button>
+        <button class="dropdown-item" type="button"><i class="fa-solid fa-user"></i> Profile Management</button>
+        <button class="dropdown-item" type="button"><i class="fa-brands fa-fort-awesome"></i> Dashboard</button>
+        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Logout
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: ;">
+                @csrf
+            </form>
+        </a>
     @else
         <button class="dropdown-item" type="button" onclick="window.location.href = '{{ route('login') }}';">Login</button>
         <button class="dropdown-item" type="button" onclick="window.location.href = '{{ route('register') }}';">Register</button>
