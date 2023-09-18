@@ -1,4 +1,5 @@
 @extends('website.layouts.master')
+@section('title' , 'Home')
 @section('main-content')
     <div class="site-wrap">
         <div class="site-blocks-cover" style="background-image: url(/assets/images/hero_1.jpg);" data-aos="fade">

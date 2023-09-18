@@ -1,4 +1,5 @@
 @extends('website.layouts.master')
+@section('title' , 'Contact')
 @section('main-content')
     <div class="site-wrap">
     <div class="bg-light py-3">

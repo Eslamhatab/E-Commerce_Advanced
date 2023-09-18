@@ -1,4 +1,5 @@
 @extends('website.layouts.master')
+@section('title' , 'Checkout')
 @section('main-content')
 <div class="site-wrap">
     <header class="site-navbar" role="banner">
