@@ -10,7 +10,7 @@
 </div>
     <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
         <div class="site-logo">
-            <a href="{{ route('') }}" class="js-logo-clone">Shoppers</a>
+            <a href="#" class="js-logo-clone">Shoppers</a>
 </div>
 </div>
     <div class="col-6 col-md-4 order-3 order-md-3 text-right">
@@ -38,7 +38,7 @@
 </button>
 <div class="dropdown-menu dropdown-menu-right">
     @if(auth()->user())
-        <button class="dropdown-item" type="button"><i class="fa-solid fa-user"></i> Profile Management</button>
+        <button class="dropdown-item" type="button" onclick="window.location.href = '{{ route('showProfile', auth()->user()->id) }}';"><i class="fa-solid fa-user"></i>  Profile Management</button>
         <button class="dropdown-item" type="button"><i class="fa-brands fa-fort-awesome"></i> Dashboard</button>
         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -87,8 +87,8 @@
                         <li><a href="#">Menu Three</a></li>
 </ul>
 </li>
-    <li><a href="#">Shop</a></li>
-        <li><a href="#">Catalogue</a></li>
+    <li><a href="{{ route("shop") }}">Shop</a></li>
+        <li><a href="{{ route('catalogue') }}">Catalogue</a></li>
             {{-- <li><a href="#">New Arrivals</a></li> --}}
                 <li><a href="{{route('contact')}}">Contact</a></li>
 </ul>

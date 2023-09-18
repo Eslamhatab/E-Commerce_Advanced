@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\MainController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,7 @@ Auth::routes();
 
 //Website MainController
 // Home Page
-Route::get('/',[MainController::class, 'home'])->name('home');
+Route::get('/',[MainController::class, 'home'])->name('home'); // Buttom Navbar
 //About Page
 Route::get('/about' , [MainController::class, 'about'])->name('about');
 //contact Page
@@ -34,9 +36,16 @@ Route::get('/wishlist',[MainController::class,'wishlist'])->name('wishlist');
 Route::get('/thank-you' , [MainController::class, 'thankYou'])->name('thank-you');
 //checkout Page
 Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout');
-
+// Catalogue Page
+Route::get('/catalogue' , [MainController::class , 'catalogue'])->name('catalogue');
+// Home WebSite Auth
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//*****-------------------- START Products Controller  route. --------------------*****//
+Route::get('/shop',[ProductsController::class , 'shop'])->name('shop');
+//*****-------------------- START Profile Controller  route. --------------------*****//
+Route::get('/profile/{id}', [ProfileController::class , 'showProfile'])->name('showProfile');
+Route::get('/profile/{id}/edit', [ProfileController::class , 'editProfile'])->name('editProfile');
+Route::patch('/profile/{id}/update', [ProfileController::class , 'updateProfile'])->name('updateProfile');
 //*****-------------------- START dashboard/admin route. --------------------*****//
 Route::group([
     'middleware' => ['auth', 'dashboard']
