@@ -4,7 +4,7 @@
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header h1 text-center border border-5 shadow rounded-4 font-weight-bold" style="background: linear-gradient(to top left, #466dce, #000000); color: snow;">{{ __('Login') }}</div>
 
                 <div class="card-body">
