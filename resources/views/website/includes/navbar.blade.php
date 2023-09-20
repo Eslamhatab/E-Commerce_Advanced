@@ -39,7 +39,9 @@
 <div class="dropdown-menu dropdown-menu-right">
     @if(auth()->user())
         <button class="dropdown-item" type="button" onclick="window.location.href = '{{ route('showProfile', auth()->user()->id) }}';"><i class="fa-solid fa-user"></i>  Profile Management</button>
+        @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator")
         <button class="dropdown-item" type="button"><i class="fa-brands fa-fort-awesome"></i> Dashboard</button>
+        @endif
         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
             Logout

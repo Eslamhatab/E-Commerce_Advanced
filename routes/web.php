@@ -18,7 +18,6 @@ use App\Http\Controllers\dashboard\DashboardMainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
 
 //Website MainController
@@ -55,7 +54,7 @@ Route::patch('/profile/{id}/update', [ProfileController::class , 'updateProfile'
 
 //*****-------------------- START dashboard/admin route. --------------------*****//
 Route::group([
-    'middleware' => ['auth'/*, 'dashboard'*/]
+    'middleware' => ['auth', 'dashboard']
 ], function () {
 
     Route::prefix('dashboard')->group(function () {
