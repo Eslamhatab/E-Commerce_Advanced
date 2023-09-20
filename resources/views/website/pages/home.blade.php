@@ -2,7 +2,7 @@
 @section('title' , 'Home')
 @section('main-content')
     <div class="site-wrap">
-        <div class="site-blocks-cover" style="background-image: url(/assets/images/hero_1.jpg);" data-aos="fade">
+        <div class="site-blocks-cover" style="background-image: url(/assets/website/images/hero_1.jpg);" data-aos="fade">
             <div class="container">
                 <div class="row align-items-start align-items-md-center justify-content-end">
                     <div class="col-md-6 text-center text-md-left pt-5 pt-md-0">
@@ -56,7 +56,7 @@
                 <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
                     <a class="block-2-item" href="#">
                         <figure class="image">
-                            <img src="/assets/images/women.jpg" alt="" class="img-fluid">
+                            <img src="/assets/website/images/women.jpg" alt="" class="img-fluid">
 </figure>
     <div class="text">
         <span class="text-uppercase">Collections</span>
@@ -67,7 +67,7 @@
     <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
         <a class="block-2-item" href="#">
             <figure class="image">
-                <img src="/assets/images/children.jpg" alt="" class="img-fluid">
+                <img src="/assets/website/images/children.jpg" alt="" class="img-fluid">
 </figure>
     <div class="text">
         <span class="text-uppercase">Collections</span>
@@ -78,7 +78,7 @@
     <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
         <a class="block-2-item" href="#">
                 <figure class="image">
-                    <img src="/assets/images/men.jpg" alt="" class="img-fluid">
+                    <img src="/assets/website/images/men.jpg" alt="" class="img-fluid">
 </figure>
     <div class="text">
         <span class="text-uppercase">Collections</span>
@@ -102,7 +102,7 @@
             <div class="item">
               <div class="block-4 text-center">
                 <figure class="block-4-image">
-                  <img src="/assets/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+                  <img src="/assets/website/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
                 </figure>
                 <div class="block-4-text p-4">
                   <h3><a href="#">Tank Top</a></h3>
@@ -114,7 +114,7 @@
             <div class="item">
               <div class="block-4 text-center">
                 <figure class="block-4-image">
-                  <img src="/assets/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                  <img src="/assets/website/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
                 </figure>
                 <div class="block-4-text p-4">
                   <h3><a href="#">Corater</a></h3>
@@ -126,7 +126,7 @@
             <div class="item">
               <div class="block-4 text-center">
                 <figure class="block-4-image">
-                  <img src="/assets/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
+                  <img src="/assets/website/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
                 </figure>
                 <div class="block-4-text p-4">
                   <h3><a href="#">Polo Shirt</a></h3>
@@ -138,7 +138,7 @@
             <div class="item">
               <div class="block-4 text-center">
                 <figure class="block-4-image">
-                  <img src="/assets/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
+                  <img src="/assets/website/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
                 </figure>
                 <div class="block-4-text p-4">
                   <h3><a href="#">T-Shirt Mockup</a></h3>
@@ -150,7 +150,7 @@
             <div class="item">
               <div class="block-4 text-center">
                 <figure class="block-4-image">
-                  <img src="/assets/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                  <img src="/assets/website/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
                 </figure>
                 <div class="block-4-text p-4">
                   <h3><a href="#">Corater</a></h3>
@@ -174,7 +174,7 @@
       </div>
       <div class="row align-items-center">
         <div class="col-md-12 col-lg-7 mb-5">
-          <a href="#"><img src="/assets/images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
+          <a href="#"><img src="/assets/website/images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
         </div>
         <div class="col-md-12 col-lg-5 text-center pl-md-5">
           <h2><a href="#">50% less in all items</a></h2>

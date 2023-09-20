@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProductsController;
+// Website Controllers
+use App\Http\Controllers\website\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\MainController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\website\ProfileController;
+// Dashboard Controllers
+use App\Http\Controllers\dashboard\DashboardMainController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,21 +43,24 @@ Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout')
 // Catalogue Page
 Route::get('/catalogue' , [MainController::class , 'catalogue'])->name('catalogue');
 // Home WebSite Auth
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\website\HomeController::class, 'index'])->name('home');
 //*****-------------------- START Products Controller  route. --------------------*****//
 Route::get('/shop',[ProductsController::class , 'shop'])->name('shop');
 //*****-------------------- START Profile Controller  route. --------------------*****//
 Route::get('/profile/{id}', [ProfileController::class , 'showProfile'])->name('showProfile');
 Route::get('/profile/{id}/edit', [ProfileController::class , 'editProfile'])->name('editProfile');
 Route::patch('/profile/{id}/update', [ProfileController::class , 'updateProfile'])->name('updateProfile');
+
+
+
 //*****-------------------- START dashboard/admin route. --------------------*****//
 Route::group([
-    'middleware' => ['auth', 'dashboard']
+    'middleware' => ['auth'/*, 'dashboard'*/]
 ], function () {
 
     Route::prefix('dashboard')->group(function () {
         //---------------- START dashboard home route ----------------//
-        Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+        Route::get('/', [DashboardMainController::class, 'index'])->name('dashboard');
         //---------------- END dashboard home route ----------------//
 
         //
