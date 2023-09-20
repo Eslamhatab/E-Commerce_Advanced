@@ -1,6 +1,8 @@
 <?php
 
 // Website Controllers
+
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\website\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\MainController;
@@ -40,7 +42,7 @@ Route::get('/thank-you' , [MainController::class, 'thankYou'])->name('thank-you'
 //checkout Page
 Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout');
 // Catalogue Page
-Route::get('/catalogue' , [MainController::class , 'catalogue'])->name('catalogue');
+Route::get('/category' , [MainController::class , 'category'])->name('category');
 // Home WebSite Auth
 Route::get('/home', [App\Http\Controllers\website\HomeController::class, 'index'])->name('home');
 //*****-------------------- START Products Controller  route. --------------------*****//
@@ -60,9 +62,11 @@ Route::group([
     Route::prefix('dashboard')->group(function () {
         //---------------- START dashboard home route ----------------//
         Route::get('/', [DashboardMainController::class, 'index'])->name('dashboard');
-        //---------------- END dashboard home route ----------------//
 
-        //
+        //---------------- END dashboard home route ----------------//
+        //---------------- START Categories Routes   ----------------//
+        Route::resource('/categories', CategoryController::class);
+        //---------------- END Categories Routes   ----------------//
 
     });
 });

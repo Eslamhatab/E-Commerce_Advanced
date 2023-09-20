@@ -24,7 +24,9 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/assets/dashboard/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="/assets/dashboard/css/app-dark.css" id="darkTheme" disabled>
-  </head>
+        {{-- Boostrap .css --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
   <body class="vertical  light  ">
     <div class="wrapper">
       @include('dashboard.includes.top-nav')
