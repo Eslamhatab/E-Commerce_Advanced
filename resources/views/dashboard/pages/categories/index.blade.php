@@ -14,7 +14,7 @@
     </tr>
     </thead>
     <tbody>
-    @forelse ($collection as $item)
+    @forelse ($categories as $category)
     <tr>
         <td>{{ $categories }}</td>
         {{-- <td>
@@ -22,11 +22,11 @@
             <div class="progress-bar" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         </td> --}}
-        <td></td>
-        <td>Barry Bright</td>
-        <td>Donec Corporation</td>
-        <td>662-5410 Eu Ave</td>
-        <td>Jun 22, 2020</td>
+        <td>{{ $category->id }}</td>
+        <td>{{ $category->title }}</td>
+        <td>{{ $category->description }}</td>
+        <td>{{ $category->created_at }}</td>
+        <td>{{ $category->updated_at }}</td>
     </tr>
 
     @empty
