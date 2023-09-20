@@ -52,7 +52,6 @@
         <button class="dropdown-item" type="button" onclick="window.location.href = '{{ route('register') }}';">Register</button>
     @endif
 </div>
-
     <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
 </div>
 </ul>
