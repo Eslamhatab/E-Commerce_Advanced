@@ -2,7 +2,7 @@
 @section('title' , 'Categories')
 @section('main-content')
 <!-- Bordered table -->
-<table class="table table-hover">
+<table class="table table-hover table-bordered @if($categories->count() == 0) d-none @endif">
     <thead class="thead-dark">
     <tr>
         <th>ID</th>
@@ -14,21 +14,27 @@
     </tr>
     </thead>
     <tbody>
-    @forelse ($categories as $category)
+    @forelse($categories as $category)
     <tr>
         <td>{{ $category->id }}</td>
         {{-- <td>
-        <div class="progress progress-sm" style="height:3px">
-            <div class="progress-bar" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+            <div class="progress progress-sm" style="height:3px">
+                <div class="progress-bar" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
         </td> --}}
         <td>{{ $category->title }}</td>
-        <td>{{ $category->description }}</td>
+        <td>{{ $category->description ?? 'N/A' }}</td>
         <td>{{ $category->created_at }}</td>
-        <td>{{ $category->updated_at }}</td>
-        <td>{{ $category->deleted_at }}</td>
+        <td>{{ $category->updated_at ?? 'N/A' }}</td>
+        <td>{{ $category->deleted_at ?? 'N/A' }}</td>
     </tr>
     @empty
+<<<<<<< HEAD
+=======
+    <div class="alert alert-danger text-center my-5 w-75 mx-auto">
+        <span class="h6">There are no categories yet! <a href="{{ route('categories.create') }}" class="fw-bold text-dark">Add categories from here</a>.</span>
+    </div>
+>>>>>>> 26645639e490e3bf00c585259e3ac3936af6df4c
     @endforelse
     </tbody>
     {{-- <div class="my-4">
