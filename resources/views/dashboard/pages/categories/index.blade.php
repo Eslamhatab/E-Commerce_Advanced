@@ -28,9 +28,7 @@
         <td>{{ $category->updated_at }}</td>
         <td>{{ $category->deleted_at }}</td>
     </tr>
-
     @empty
-
     @endforelse
     </tbody>
     {{-- <div class="my-4">
