@@ -29,12 +29,9 @@
         <td>{{ $category->deleted_at ?? 'N/A' }}</td>
     </tr>
     @empty
-<<<<<<< HEAD
-=======
     <div class="alert alert-danger text-center my-5 w-75 mx-auto">
         <span class="h6">There are no categories yet! <a href="{{ route('categories.create') }}" class="fw-bold text-dark">Add categories from here</a>.</span>
     </div>
->>>>>>> 26645639e490e3bf00c585259e3ac3936af6df4c
     @endforelse
     </tbody>
     {{-- <div class="my-4">

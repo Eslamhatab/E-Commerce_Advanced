@@ -23,8 +23,10 @@ use App\Http\Controllers\dashboard\DashboardMainController;
 Auth::routes();
 
 //Website MainController
-// Home Page
-Route::get('/',[MainController::class, 'home'])->name('home'); // Buttom Navbar
+// Home Page (guest is allowed to access)
+Route::get('/',[MainController::class, 'home'])->name('home'); // ancor Navbar
+// Home WebSite Auth (guest is not allowed to access)
+Route::get('/home', [App\Http\Controllers\website\HomeController::class, 'index'])->name('home');
 //About Page
 Route::get('/about' , [MainController::class, 'about'])->name('about');
 //contact Page
@@ -43,8 +45,6 @@ Route::get('/thank-you' , [MainController::class, 'thankYou'])->name('thank-you'
 Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout');
 // Catalogue Page
 Route::get('/category' , [MainController::class , 'category'])->name('category');
-// Home WebSite Auth
-Route::get('/home', [App\Http\Controllers\website\HomeController::class, 'index'])->name('home');
 //*****-------------------- START Products Controller  route. --------------------*****//
 Route::get('/shop',[ProductsController::class , 'shop'])->name('shop');
 //*****-------------------- START Profile Controller  route. --------------------*****//
