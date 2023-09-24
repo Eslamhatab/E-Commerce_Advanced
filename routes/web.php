@@ -39,6 +39,7 @@ Route::get('/wishlist',[MainController::class,'wishlist'])->name('wishlist');
 Route::get('/thank-you' , [MainController::class, 'thankYou'])->name('thank-you');
 //checkout Page
 Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout');
+// Route::get('/categories', [MainController::class , 'category'])->name('category');
 // START Category Routes
 Route::resource('/categories', CategoryController::class);
 Route::delete('/categories/delete',[CategoryController::class , 'clearProducts'])->name('categoriesProducts.clear'); //Route Function Clear Category's Products
