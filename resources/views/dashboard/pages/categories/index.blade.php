@@ -6,21 +6,30 @@
 <p>
     <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
         {{ session()->get('created_category_successfully') }}
-        {{-- <a href="{{ route('products.delete') }}">Check Trashed Products</a> --}}
     </div>
 </p>
 @elseif(session()->has('updated_category_successfully'))
 <p>
     <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
         {{ session()->get('updated_category_successfully') }}
-        {{-- <a href="{{ route('products.delete') }}">Check Trashed Products</a> --}}
     </div>
 </p>
-@elseif(session()->has('deleted_category_successfully'))
+@elseif(session()->has('softDeleted_category_successfully'))
 <p>
     <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
-        {{ session()->get('deleted_category_successfully') }}
-        {{-- <a href="{{ route('products.delete') }}">Check Trashed Products</a> --}}
+        {{ session()->get('softDeleted_category_successfully') }} <a href="{{ route('categories.delete') }}">Trash</a>.
+    </div>
+</p>
+@elseif(session()->has('restored_category_successfully'))
+<p>
+    <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
+        {{ session()->get('restored_category_successfully') }}
+    </div>
+</p>
+@elseif(session()->has('forceDeleted_category_successfully'))
+<p>
+    <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
+        {{ session()->get('forceDeleted_category_successfully') }}
     </div>
 </p>
 @endif
@@ -48,16 +57,14 @@
         <td>{{ $category->description ?? 'N/A' }}</td>
         <td>{{ $category->created_at }}</td>
         <td>{{ $category->updated_at ?? 'N/A' }}</td>
-        <td class="text-light ">
-            <div class="d-flex justify-content-between aligin-items-center">
-                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-warning btn-sm font-weight-bold fs-5">Show</a>
-                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm font-weight-bold fs-5">Edit</a>
-                <form action="{{ route('categories.destroy', $category->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm font-weight-bold fs-5">Delete</button>
-                </form>
-            </div>
+        <td>
+            <form action="{{ route('categories.destroy', $category->id) }}" method="post" class="d-flex justify-content-between aligin-items-center">
+                @csrf
+                @method('DELETE')
+                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-warning btn-sm font-weight-bold fs-6">Show</a>
+                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm font-weight-bold fs-6">Edit</a>
+                <button type="submit" class="btn btn-danger btn-sm font-weight-bold fs-6">Delete</button>
+            </form>
         </td>
     </tr>
     @empty

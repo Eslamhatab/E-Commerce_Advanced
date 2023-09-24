@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::orderBy('id' , 'desc')->simplePaginate(4);
+        $categories = Category::orderBy('id' , 'desc')->simplePaginate(5);
         return view('dashboard.pages.categories.index',compact('categories'));
     }
 
@@ -97,8 +97,8 @@ class CategoryController extends Controller
     public function update(Request $request, int $id){
         // Validate Category
         $request->validate([
-            'title'        => 'required|max:255',
-            'description'  => 'nullable|max:1020',
+            'title'        => 'required|string|max:255',
+            'description'  => 'nullable|string|max:1020',
         ]);
             //update Category
             $category_old    = Category::find($id);
@@ -140,8 +140,14 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('softDeleted_category_successfully', "The category ($category->title) has been moved to trash successfully.");
     }
 
+    public function delete(){
+        $categories       = Category::orderBy('id', 'desc')->onlyTrashed()->simplePaginate(5);
+        $categories_count = $categories->count();
+        return view('dashboard.pages.categories.delete', compact('categories', 'categories_count'));
+    }
+
     public function restore($id){
-        $category = Category::find($id);
+        $category = Category::withTrashed()->findOrFail($id);
         $category->restore();
         return redirect()->route('categories.index')->with('restored_category_successfully', "The category ($category->title) has been restored successfully.");
     }
