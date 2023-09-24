@@ -1,5 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('title' , 'Create Category')
+@inject('category', 'App\Models\Category')
 @section('main-content')
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -16,8 +17,8 @@
                 <form action="{{ route('categories.store') }}" method="post">
                     @csrf
                     @include('dashboard.pages.categories.form')
-                    <button type="submit" class="btn btn-success btn-md px-4 font-weight-bold fs-5 border-2 shadow border-dark rounded" >Submit</button>
-                    <button type="reset" class="btn btn-secondary btn-md px-2 font-weight-bold fs-5 shadow border-2 border-dark rounded" >Reset</button>
+                    <button type="submit" class="btn btn-success btn-md px-4 py-1 font-weight-bold fs-5 border-2 shadow border-dark rounded" >Submit</button>
+                    <button type="reset" class="btn btn-secondary btn-md px-2 py-2 font-weight-bold fs-8 shadow border-2 border-dark rounded" >Reset</button>
                 </form>
               </div> <!-- /.col -->
             </div>

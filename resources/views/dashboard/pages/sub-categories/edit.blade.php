@@ -8,7 +8,7 @@
         {{-- <p class="text-muted"></p> --}}
         <div class="card shadow mb-4">
           <div class="card-header">
-            <strong class="card-title fs-2">Edit Category (<span class="text-primary">{{ $category->title }}</span>)</strong>
+            <strong class="card-title fs-2">Edit Category ({{ $category->title }})</strong>
           </div>
           <div class="card-body">
             <div class="row">
@@ -17,8 +17,8 @@
                     @csrf
                     @method('PUT')
                     @include('dashboard.pages.categories.form')
-                    <button type="submit" class="btn btn-primary btn-md px-4 py-1 font-weight-bold fs-5 border-2 shadow border-dark rounded" >Update</button>
-                    <a href="{{ route('categories.index') }}" class="btn btn-dark btn-md px-2 py-2 font-weight-bold fs-8 shadow border-2 border-dark rounded" >Return to Categories</a>
+                    <button type="submit" class="btn btn-primary btn-md px-4 font-weight-bold fs-5 border-2 shadow border-dark rounded" >Update</button>
+                    <a href="{{ route('categories.index') }}" class="btn btn-dark btn-md px-2 font-weight-bold fs-5 shadow border-2 border-dark rounded" >Return to Categories</a>
                 </form>
               </div> <!-- /.col -->
             </div>

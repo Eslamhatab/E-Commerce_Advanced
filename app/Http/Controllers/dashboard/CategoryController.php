@@ -137,7 +137,19 @@ class CategoryController extends Controller
     public function destroy($id){
         $category = Category::find($id);
         $category->delete();
-        return redirect()->route('categories.index')->with('deleted_category_successfully', "The category ($category->title) has been deleted successfully.");
+        return redirect()->route('categories.index')->with('softDeleted_category_successfully', "The category ($category->title) has been moved to trash successfully.");
+    }
+
+    public function restore($id){
+        $category = Category::find($id);
+        $category->restore();
+        return redirect()->route('categories.index')->with('restored_category_successfully', "The category ($category->title) has been restored successfully.");
+    }
+
+    public function forceDelete($id){
+        $category = Category::where('id', $id);
+        $category->forceDelete();
+        return redirect()->route('categories.index')->with('forceDeleted_category_successfully', "The category ($category->title) has been permanently deleted successfully.");
     }
 }
 
