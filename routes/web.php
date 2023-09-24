@@ -24,7 +24,7 @@ Auth::routes();
 
 //Website MainController
 // Home Page (guest is allowed to access)
-Route::get('/',[MainController::class, 'home'])->name('home'); // ancor Navbar
+Route::get('/',[MainController::class, 'home'])->name('home-ancor'); // ancor Navbar
 // Home WebSite Auth (guest is not allowed to access)
 Route::get('/home', [App\Http\Controllers\website\HomeController::class, 'index'])->name('home');
 //About Page

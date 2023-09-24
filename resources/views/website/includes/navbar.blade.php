@@ -10,7 +10,7 @@
 </div>
     <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
         <div class="site-logo">
-            <a href="{{ route('home') }}" class="js-logo-clone">Shoppers</a>
+            <a href="{{ route('home-ancor') }}" class="js-logo-clone">Shoppers</a>
 </div>
 </div>
     <div class="col-6 col-md-4 order-3 order-md-3 text-right">
@@ -65,7 +65,7 @@
         <div class="container">
             <ul class="site-menu js-clone-nav d-none d-md-block">
                 <li class="has-children active">
-                    <a href="{{ route('home') }}">Home</a>
+                    <a href="{{ route('home-ancor') }}">Home</a>
                         <ul class="dropdown">
                             <li><a href="#">Menu One</a></li>
                                 <li><a href="#">Menu Two</a></li>
