@@ -43,7 +43,9 @@ class MainController extends Controller
     public function checkout(){
         return view('website.pages.checkout');
     }
-    // public function category(){
-    //     return view ('dashboard.pages.categories.index');
-    // }
+     //category page
+     public function category(){
+        return view('website.pages.category');
+    }
+
 }

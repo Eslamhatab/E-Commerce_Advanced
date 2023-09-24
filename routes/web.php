@@ -38,15 +38,8 @@ Route::get('/wishlist',[MainController::class,'wishlist'])->name('wishlist');
 //thankyou Page
 Route::get('/thank-you' , [MainController::class, 'thankYou'])->name('thank-you');
 //checkout Page
-Route::get('/checkout' , [MainController::class , 'checkout'])->name('checkout');
-// Route::get('/categories', [MainController::class , 'category'])->name('category');
-// START Category Routes
-Route::resource('/categories', CategoryController::class);
-Route::delete('/categories/delete',[CategoryController::class , 'clearProducts'])->name('categoriesProducts.clear'); //Route Function Clear Category's Products
-Route::get('/categories/delete/{id}',[CategoryController::class , 'delete'])->name('categories.destroy');  //Route Function softDelete Category
-Route::get('/categories/restore/{id}',[CategoryController::class , 'restore'])->name('categories.restore');  //Route Function restore
-Route::delete('/categories/forceDelete/{id}',[CategoryController::class , 'forceDelete'])->name('categories.forceDelete');  //Route Function forceDelete
-// END Category Routes
+Route::get('/checkout' , [MainController::class, 'checkout'])->name('checkout');
+Route::get('/categories', [MainController::class, 'category'])->name('category');
 //*****-------------------- START Products Controller  route. --------------------*****//
 Route::get('/shop',[ProductsController::class , 'shop'])->name('shop');
 //*****-------------------- START Profile Controller  route. --------------------*****//
@@ -64,6 +57,10 @@ Route::group([
         //---------------- END dashboard home route ----------------//
         //---------------- START Categories Routes   ----------------//
         Route::resource('/categories', CategoryController::class);
+        Route::delete('/categories/delete',[CategoryController::class , 'clearProducts'])->name('categoriesProducts.clear'); //Route Function Clear Category's Products
+        Route::get('/categories/delete/{id}',[CategoryController::class , 'delete'])->name('categories.destroy');  //Route Function softDelete Category
+        Route::get('/categories/restore/{id}',[CategoryController::class , 'restore'])->name('categories.restore');  //Route Function restore
+        Route::delete('/categories/forceDelete/{id}',[CategoryController::class , 'forceDelete'])->name('categories.forceDelete');  //Route Function forceDelete
         //---------------- END Categories Routes   ----------------//
     });
 });
