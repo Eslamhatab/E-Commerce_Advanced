@@ -89,8 +89,8 @@
 </ul>
 </li>
     <li><a href="{{ route("shop") }}">Shop</a></li>
-        {{-- <li><a href="{{ route('category') }}">Category</a></li> --}}
-            {{-- <li><a href="#">New Arrivals</a></li> --}}
+        <li><a href="{{ route('category') }}">Category</a></li>
+            <li><a href="#">New Arrivals</a></li>
                 <li><a href="{{route('contact')}}">Contact</a></li>
 </ul>
 </div>
