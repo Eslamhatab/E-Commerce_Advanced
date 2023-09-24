@@ -81,8 +81,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
-    {
+    public function update(Request $request, int $id){
         // Validate Category
         $request->validate([
             'title'        => 'required|unique::categories|max:255',
@@ -120,7 +119,7 @@ class CategoryController extends Controller
             $message_body  = "The Category ($category->id. $category->title) all attributes' values remains the same values.";
             return redirect('/categories')->with($message_title, $message_body);
         }
-
+        }
     /**
      * Remove the specified resource from storage.
      *
@@ -131,3 +130,4 @@ class CategoryController extends Controller
         //
     }
 }
+
