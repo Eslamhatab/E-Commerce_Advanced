@@ -42,14 +42,17 @@ class CategoryController extends Controller
     {
          // Validate Category
          $request->validate([
-            'title'        => 'required|string|unique:categories,title|max:255',
-            'description'  => 'nullable|string|max:1020',
+            'title'          => 'required|string|unique:categories,title|max:255',
+            'description'    => 'nullable|string|max:1020',
+            'create_user_id' => 'nullable',
+            'update_user_id' => 'nullable',
         ]);
             //create Category
-            $category               = new Category();
-            $category->title        = $request->title;
-            $category->description  = $request->description;
-            $category->updated_at   = null;
+            $category                 = new Category();
+            $category->title          = $request->title;
+            $category->description    = $request->description;
+            $category->create_user_id = auth()->user()->id;
+            $category->updated_at     = null;
             $category->save();
 
             return redirect()->route('categories.index')->with('created_category_successfully', "The category ($category->title) has been created successfully.");
@@ -68,7 +71,7 @@ class CategoryController extends Controller
         if($category == null){
             return view('dashboard.pages.categories.categories-404');
         }
-        return view('dashbord.categories.index' , compact('category'));
+        return view('dashboard.pages.categories.show', compact('category'));
     }
 
     /**
@@ -82,9 +85,14 @@ class CategoryController extends Controller
         //
             $category = Category::find($id);
             if($category == null){
-                return view('dashboard.pages.categories.categories-404');
+                return view('dashboard.pages.categories.404.categories-404');
             }
-            return view('dashboard.pages.categories.edit', compact('category'));
+            if(auth()->user()->user_type == "admin"){
+                return view('dashboard.pages.categories.edit', compact('category'));
+            }
+            else{ //auth()->user()->user_type == "moderator"
+                return view('dashboard.pages.categories.unauthorized.unauthorized');
+            }
         }
 
     /**
@@ -97,12 +105,14 @@ class CategoryController extends Controller
     public function update(Request $request, int $id){
         // Validate Category
         $request->validate([
-            'title'        => 'required|string|max:255',
-            'description'  => 'nullable|string|max:1020',
+            'title'          => 'required|string|max:255',
+            'description'    => 'nullable|string|max:1020',
+            'create_user_id' => 'nullable',
+            'update_user_id' => 'nullable',
         ]);
             //update Category
-            $category_old    = Category::find($id);
-            $category        = Category::find($id);
+            $category_old             = Category::find($id);
+            $category                 = Category::find($id);
             $category->title = $request->title;
             if($category->title == $request->title){
                 $category->title = $category->title; //same value in the DB
@@ -111,7 +121,8 @@ class CategoryController extends Controller
                 $category->title = $request->title; //new updated value in DB
             }
 
-            $category->description  = $request->description;
+            $category->description    = $request->description;
+            $category->update_user_id = auth()->user()->id;
             $category->save();
 
             return redirect()->route('categories.index')->with('updated_category_successfully', "The category ($category_old->title) has been updated successfully.");
@@ -137,6 +148,8 @@ class CategoryController extends Controller
     public function destroy($id){
         $category = Category::find($id);
         $category->delete();
+        $category->updated_at = null;
+        $category->save();
         return redirect()->route('categories.index')->with('softDeleted_category_successfully', "The category ($category->title) has been moved to trash successfully.");
     }
 
@@ -149,6 +162,9 @@ class CategoryController extends Controller
     public function restore($id){
         $category = Category::withTrashed()->find($id);
         $category->restore();
+        $category = Category::findOrFail($id);
+        $category->updated_at = null;
+        $category->save();
         return redirect()->route('categories.index')->with('restored_category_successfully', "The category ($category->title) has been restored successfully.");
     }
 

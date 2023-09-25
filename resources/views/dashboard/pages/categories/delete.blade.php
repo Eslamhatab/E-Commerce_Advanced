@@ -8,10 +8,14 @@
         <th class="font-weight-bold">ID</th>
         <th class="font-weight-bold">Title</th>
         <th class="font-weight-bold">Description</th>
+        <th class="font-weight-bold">Created By</th>
+        <th class="font-weight-bold">Updated By</th>
         <th class="font-weight-bold">Created At</th>
         <th class="font-weight-bold">Updated At</th>
         <th class="font-weight-bold">Deleted At</th>
+        @if(auth()->user()->user_type == "admin")
         <th class="font-weight-bold">Actions</th>
+        @endif
     </tr>
     </thead>
     <tbody>
@@ -25,13 +29,15 @@
         </td> --}}
         <td>{{ $category->title }}</td>
         <td>{{ $category->description ?? 'N/A' }}</td>
+        <td>{{ $category->create_user->name ?? '...' }}</td>
+        <td>{{ $category->update_user->name ?? 'N/A' }}</td>
         <td>{{ $category->created_at }}</td>
         <td>{{ $category->updated_at ?? 'N/A' }}</td>
         <td>{{ $category->deleted_at ?? 'N/A' }}</td>
+        @if(auth()->user()->user_type == "admin")
         <td class="text-light">
             <div class="d-flex justify-content-between aligin-items-center">
                 <form action="{{ route('categories.restore', $category->id) }}" method="GET">
-                    @csrf
                     <button type="submit" class="btn btn-success btn-sm font-weight-bold fs-7">Restore</button>
                 </form>
 
@@ -42,6 +48,7 @@
                 </form>
             </div>
         </td>
+        @endif
     </tr>
     @empty
     <div class="alert alert-danger text-center my-5 w-75 mx-auto">
