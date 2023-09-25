@@ -48,12 +48,11 @@ Route::get('/profile/{id}/edit', [ProfileController::class , 'editProfile'])->na
 Route::patch('/profile/{id}/update', [ProfileController::class , 'updateProfile'])->name('updateProfile');
 //*****-------------------- START dashboard/admin route. --------------------*****//
 Route::group([
-    'middleware' => ['auth', 'dashboard']
+'middleware' => ['auth', 'dashboard']
 ], function () {
-    Route::prefix('dashboard')->group(function () {
-        //---------------- START dashboard home route ----------------//
-        Route::get('/', [DashboardMainController::class, 'index'])->name('dashboard');
-
+Route::prefix('dashboard')->group(function () {
+//---------------- START dashboard home route ----------------//
+Route::get('/', [DashboardMainController::class, 'index'])->name('dashboard');
         //---------------- END dashboard home route ----------------//
         //---------------- START Categories Routes   ----------------//
         Route::resource('/categories', CategoryController::class);
