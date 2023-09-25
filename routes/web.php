@@ -57,10 +57,10 @@ Route::group([
         //---------------- END dashboard home route ----------------//
         //---------------- START Categories Routes   ----------------//
         Route::resource('/categories', CategoryController::class);
-        Route::delete('/categories-products/delete/{id}',[CategoryController::class , 'clearProducts'])->name('categoriesProducts.clear'); //Route Function Clear All Products that belongs to a specific Category by id
-        Route::get('/categories/delete',[CategoryController::class , 'delete'])->name('categories.delete');  //Route Function softDelete Category
-        Route::get('/categories/restore/{id}',[CategoryController::class , 'restore'])->name('categories.restore');  //Route Function restore
-        Route::delete('/categories/forceDelete/{id}',[CategoryController::class , 'forceDelete'])->name('categories.forceDelete');  //Route Function forceDelete
+        Route::delete('/category-products/delete/{id}',[CategoryController::class , 'clearProducts'])->name('categoriesProducts.clear'); //Route Function Clear All Products that belongs to a specific Category by id
+        Route::get('/category/delete',[CategoryController::class , 'delete'])->name('categories.delete');  //Route Function softDelete Category
+        Route::get('/category/restore/{id}',[CategoryController::class , 'restore'])->name('categories.restore');  //Route Function restore
+        Route::delete('/category/forceDelete/{id}',[CategoryController::class , 'forceDelete'])->name('categories.forceDelete');  //Route Function forceDelete
         //---------------- END Categories Routes   ----------------//
     });
 });

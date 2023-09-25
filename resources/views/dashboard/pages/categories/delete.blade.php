@@ -5,19 +5,19 @@
 <table class="table table-hover table-bordered @if($categories_count == 0) d-none @endif">
     <thead class="thead-dark">
     <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>created_at</th>
-        <th>updated_at</th>
-        <th>deleted_at</th>
-        <th>Actions</th>
+        <th class="font-weight-bold">ID</th>
+        <th class="font-weight-bold">Title</th>
+        <th class="font-weight-bold">Description</th>
+        <th class="font-weight-bold">Created At</th>
+        <th class="font-weight-bold">Updated At</th>
+        <th class="font-weight-bold">Deleted At</th>
+        <th class="font-weight-bold">Actions</th>
     </tr>
     </thead>
     <tbody>
     @forelse($categories as $category)
     <tr>
-        <td>{{ $category->id }}</td>
+        <td class="font-weight-bold">{{ $category->id }}</td>
         {{-- <td>
             <div class="progress progress-sm" style="height:3px">
                 <div class="progress-bar" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
@@ -32,12 +32,13 @@
             <div class="d-flex justify-content-between aligin-items-center">
                 <form action="{{ route('categories.restore', $category->id) }}" method="GET">
                     @csrf
-                    <button type="submit" class="btn btn-success btn-md font-weight-bold fs-6">Delete</button>
+                    <button type="submit" class="btn btn-success btn-sm font-weight-bold fs-7">Restore</button>
                 </form>
+
                 <form action="{{ route('categories.forceDelete', $category->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-md font-weight-bold fs-6">Delete</button>
+                    <button type="submit" class="btn btn-danger btn-sm font-weight-bold fs-7">Permanent Delete</button>
                 </form>
             </div>
         </td>

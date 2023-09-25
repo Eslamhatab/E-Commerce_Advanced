@@ -2,52 +2,22 @@
 @section('title' , 'Categories')
 @section('main-content')
 <!-- Bordered table -->
-@if(session()->has('created_category_successfully'))
-<p>
-    <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
-        {{ session()->get('created_category_successfully') }}
-    </div>
-</p>
-@elseif(session()->has('updated_category_successfully'))
-<p>
-    <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
-        {{ session()->get('updated_category_successfully') }}
-    </div>
-</p>
-@elseif(session()->has('softDeleted_category_successfully'))
-<p>
-    <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
-        {{ session()->get('softDeleted_category_successfully') }} <a href="{{ route('categories.delete') }}">Trash</a>.
-    </div>
-</p>
-@elseif(session()->has('restored_category_successfully'))
-<p>
-    <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
-        {{ session()->get('restored_category_successfully') }}
-    </div>
-</p>
-@elseif(session()->has('forceDeleted_category_successfully'))
-<p>
-    <div class="alert alert-success text-center mx-auto" style="width: 90%; margin-top: 3%;">
-        {{ session()->get('forceDeleted_category_successfully') }}
-    </div>
-</p>
-@endif
+@include('dashboard.pages.categories.messages')
 <table class="table table-hover table-bordered @if($categories->count() == 0) d-none @endif">
     <thead class="thead-dark">
     <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>created_at</th>
-        <th>updated_at</th>
-        <th>Actions</th>
+        <th class="font-weight-bold">ID</th>
+        <th class="font-weight-bold">Title</th>
+        <th class="font-weight-bold">Description</th>
+        <th class="font-weight-bold">Created At</th>
+        <th class="font-weight-bold">Updated At</th>
+        <th class="font-weight-bold">Actions</th>
     </tr>
     </thead>
     <tbody>
     @forelse($categories as $category)
     <tr>
-        <td>{{ $category->id }}</td>
+        <td class="font-weight-bold">{{ $category->id }}</td>
         {{-- <td>
             <div class="progress progress-sm" style="height:3px">
                 <div class="progress-bar" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>

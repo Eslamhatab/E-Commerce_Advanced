@@ -147,7 +147,7 @@ class CategoryController extends Controller
     }
 
     public function restore($id){
-        $category = Category::withTrashed()->findOrFail($id);
+        $category = Category::withTrashed()->find($id);
         $category->restore();
         return redirect()->route('categories.index')->with('restored_category_successfully', "The category ($category->title) has been restored successfully.");
     }
@@ -155,7 +155,7 @@ class CategoryController extends Controller
     public function forceDelete($id){
         $category = Category::where('id', $id);
         $category->forceDelete();
-        return redirect()->route('categories.index')->with('forceDeleted_category_successfully', "The category ($category->title) has been permanently deleted successfully.");
+        return redirect()->route('categories.index')->with('forceDeleted_category_successfully', "The category has been permanently deleted successfully.");
     }
 }
 
